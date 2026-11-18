@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 27th Birthday, Base AIOverall 2026 GAMES</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: #05070f;
+            color: #e2e8f0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .title-font {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Animated Grid Cyber Background */
+        .cyber-bg {
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(0, 243, 255, 0.15) 0%, transparent 70%),
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+        }
+
+        /* Flexbox Card Buttons with exact 2s smooth ease glow transition */
+        .neon-card {
+            background: rgba(13, 17, 30, 0.85);
+            border: 2px solid #1e293b;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+
+            /* MUST HAVE 2 SECONDS EASE ANIMATION GLOW */
+            transition: all 2s ease, box-shadow 2s ease, background-color 2s ease, border-color 2s ease, transform 0.4s ease;
+        }
+
+        .neon-card:hover {
+            border-color: #00f3ff;
+            background: rgba(0, 243, 255, 0.12);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.8), inset 0 0 15px rgba(0, 243, 255, 0.4);
+            transform: translateY(-4px);
+        }
+
+        /* Active State Card */
+        .neon-card.active {
+            border-color: #ff00ff !important;
+            background: rgba(255, 0, 255, 0.18) !important;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.9), inset 0 0 20px rgba(255, 0, 255, 0.5) !important;
+        }
+
+        /* Glowing text effects */
+        .glow-text-cyan {
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.8), 0 0 20px rgba(0, 243, 255, 0.5);
+        }
+
+        .glow-text-magenta {
+            text-shadow: 0 0 12px rgba(255, 0, 255, 0.8), 0 0 25px rgba(255, 0, 255, 0.5);
+        }
+
+        /* Neon Pulse Animation for Header Badge */
+        @keyframes neonPulse {
+            0%, 100% { opacity: 1; filter: drop-shadow(0 0 8px #00f3ff); }
+            50% { opacity: 0.7; filter: drop-shadow(0 0 20px #ff00ff); }
+        }
+
+        .pulse-badge {
+            animation: neonPulse 3s infinite ease-in-out;
+        }
+
+        /* Loading Spinner */
+        .loader {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border-left-color: #00f3ff;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="cyber-bg flex flex-col min-h-screen p-3 md:p-6">
+
+    <!-- Header Section -->
+    <header class="text-center my-4">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/40 bg-cyan-950/30 text-cyan-400 text-sm font-semibold tracking-wider uppercase mb-3 pulse-badge">
+            <i class="fa-solid fa-gamepad"></i> Happy 27th Birthday, Base AI • 2026 Collection
+        </div>
+        <h1 class="title-font text-2xl md:text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-500 uppercase tracking-wider glow-text-cyan">
+            Happy 27th Birthday, Base AIOverall 2026 GAMES
+        </h1>
+        <p class="text-slate-400 text-sm md:text-base mt-2 max-w-2xl mx-auto">
+            Click any flexbox neon card below to instantly preview and play the game. Game 7 includes a secure direct-access fallback for seamless viewing!
+        </p>
+    </header>
+
+    <!-- FLEXBOX BUTTONS / CARDS GRID (8 ITEMS) -->
+    <section class="max-w-7xl w-full mx-auto my-6">
+        <div class="flex flex-wrap justify-center gap-4" id="cards-container">
+            <!-- Cards will be dynamically rendered via JS -->
+        </div>
+    </section>
+
+    <!-- LIVE VIEWER & DISPLAY SECTION -->
+    <main class="max-w-7xl w-full mx-auto flex-1 flex flex-col bg-slate-900/90 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden my-4 backdrop-blur-md">
+        
+        <!-- Viewer Control Bar -->
+        <div class="bg-slate-950 px-4 py-3 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-3 overflow-hidden">
+                <span class="inline-flex items-center justify-center w-3 h-3 rounded-full bg-red-500"></span>
+                <span class="inline-flex items-center justify-center w-3 h-3 rounded-full bg-yellow-500"></span>
+                <span class="inline-flex items-center justify-center w-3 h-3 rounded-full bg-green-500"></span>
+                <h2 id="current-game-title" class="title-font text-cyan-300 font-bold text-base md:text-lg truncate ml-2">
+                    Select a Game Above
+                </h2>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-2">
+                <button id="refresh-btn" onclick="reloadIframe()" class="px-3 py-1.5 text-xs md:text-sm bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-lg transition border border-cyan-500/30 flex items-center gap-1.5">
+                    <i class="fa-solid fa-rotate-right"></i> Reload
+                </button>
+                <a id="external-link-btn" href="#" target="_blank" class="px-3 py-1.5 text-xs md:text-sm bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold rounded-lg transition shadow-lg flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Fullscreen / New Tab
+                </a>
+            </div>
+        </div>
+
+        <!-- Iframe Viewer & Fallback Container -->
+        <div class="relative w-full flex-1 min-h-[500px] md:min-h-[650px] bg-black flex flex-col">
+            
+            <!-- Loading Overlay -->
+            <div id="loading-overlay" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/90 z-20 transition-opacity duration-300">
+                <div class="loader mb-3"></div>
+                <p class="text-cyan-400 font-semibold tracking-wide text-sm animate-pulse">LOADING GAME CONTENT...</p>
+            </div>
+
+            <!-- Direct Fallback Banner for restricted external apps (Game 7) -->
+            <div id="fallback-banner" class="hidden absolute inset-0 z-10 flex flex-col items-center justify-center bg-slate-950/95 p-6 text-center">
+                <div class="w-16 h-16 bg-pink-950/60 border border-pink-500/50 rounded-2xl flex items-center justify-center text-pink-400 text-2xl mb-4 shadow-[0_0_20px_rgba(255,0,255,0.4)]">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3 class="title-font text-xl md:text-2xl font-bold text-white mb-2">Direct Access Required</h3>
+                <p class="text-slate-300 max-w-md text-sm md:text-base mb-6">
+                    This external app (<span id="fallback-url-text" class="text-cyan-400 font-mono text-xs"></span>) has security policies (X-Frame-Options) that prevent embedding inside browsers directly. Click below to launch it instantly in a new tab!
+                </p>
+                <a id="fallback-action-btn" href="#" target="_blank" class="px-6 py-3 bg-gradient-to-r from-cyan-500 to-pink-600 hover:from-cyan-400 hover:to-pink-500 text-white font-bold rounded-xl shadow-[0_0_25px_rgba(0,243,255,0.6)] transition transform hover:scale-105 flex items-center gap-2">
+                    <i class="fa-solid fa-rocket"></i> Launch Ian Party Blast (Base44) Now
+                </a>
+            </div>
+
+            <!-- Embedded Frame -->
+            <iframe 
+                id="game-iframe" 
+                src="" 
+                class="w-full h-full border-0 absolute inset-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 text-xs text-slate-500">
+        &copy; 2026 Happy 27th Birthday, Base AI • Built with Neon Cyber Styling & 2s Ease Glow Transitions
+    </footer>
+
+    <!-- SCRIPT LOGIC -->
+    <script>
+        // List of 8 Links and Titles with custom flags for strict embeds
+        const gameList = [
+            {
+                id: 1,
+                title: "Happy 27th Birthday Quest - 3D Anime",
+                url: "https://ragesband1.github.io/November-18-2026-Happy-27th-Birthday-Quest---3D-Anime/",
+                icon: "fa-vr-cardboard",
+                requiresFallback: false
+            },
+            {
+                id: 2,
+                title: "27th Birthday Quest - 3D",
+                url: "https://ragesband1.github.io/November-18-2026-27th-Birthday-Quest-3D/",
+                icon: "fa-cube",
+                requiresFallback: false
+            },
+            {
+                id: 3,
+                title: "27th Birthday Quest - Viral Surge",
+                url: "https://ragesband1.github.io/November-18-2026-27th-Birthday-Quest-Viral-Surge/",
+                icon: "fa-bolt",
+                requiresFallback: false
+            },
+            {
+                id: 4,
+                title: "Anime World Generator 2D/3D",
+                url: "https://ragesband1.github.io/November-18-2026-Anime-World-Generator-2D-3D-Text-to-Game-/",
+                icon: "fa-wand-magic-sparkles",
+                requiresFallback: false
+            },
+            {
+                id: 5,
+                title: "Happy 27th Birthday Evergreen",
+                url: "https://ragesband1.github.io/November-18-2026-Happy-27th-Birthday-Ian-Patrick-Batungbacal-Evergreen/",
+                icon: "fa-tree",
+                requiresFallback: false
+            },
+            {
+                id: 6,
+                title: "Happy 27th Birthday Main",
+                url: "https://ragesband1.github.io/November-18-2026-Happy-27th-Birthday-Ian-Patrick-Batungbacal-/",
+                icon: "fa-cake-candles",
+                requiresFallback: false
+            },
+            {
+                id: 7,
+                title: "Ian Party Blast (Base44 App)",
+                url: "https://ian-party-blast.base44.app/",
+                icon: "fa-champagne-glasses",
+                requiresFallback: true // Game 7 fallback enabled
+            },
+            {
+                id: 8,
+                title: "Happy 27th Birthday Variant 2",
+                url: "https://ragesband1.github.io/November-18-2026-Happy-27th-Birthday-Ian-Patrick-Batungbacal-2/",
+                icon: "fa-robot",
+                requiresFallback: false
+            }
+        ];
+
+        const cardsContainer = document.getElementById('cards-container');
+        const iframe = document.getElementById('game-iframe');
+        const currentGameTitle = document.getElementById('current-game-title');
+        const externalLinkBtn = document.getElementById('external-link-btn');
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const fallbackBanner = document.getElementById('fallback-banner');
+        const fallbackUrlText = document.getElementById('fallback-url-text');
+        const fallbackActionBtn = document.getElementById('fallback-action-btn');
+
+        let activeIndex = 0;
+        let loadTimeout = null;
+
+        // Render Cards dynamically using Flexbox styling
+        function renderCards() {
+            cardsContainer.innerHTML = gameList.map((game, index) => `
+                <div 
+                    onclick="selectGame(${index})"
+                    id="card-${index}"
+                    class="neon-card flex-1 min-w-[260px] max-w-[320px] p-4 rounded-xl flex items-center gap-3 ${index === 0 ? 'active' : ''}"
+                >
+                    <div class="w-10 h-10 rounded-lg bg-slate-800/80 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-lg flex-shrink-0">
+                        <i class="fa-solid ${game.icon}"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <span class="text-[10px] uppercase font-bold tracking-wider text-pink-400 block mb-0.5">Game #${game.id}</span>
+                        <h3 class="font-bold text-sm text-slate-100 truncate leading-snug">${game.title}</h3>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Select game function
+        function selectGame(index) {
+            activeIndex = index;
+            const selected = gameList[index];
+
+            // Clear any existing load timeouts
+            if (loadTimeout) clearTimeout(loadTimeout);
+
+            // Update Active Card visual states
+            document.querySelectorAll('.neon-card').forEach((card, idx) => {
+                if (idx === index) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+
+            // Update title and URL
+            currentGameTitle.textContent = `#${selected.id} - ${selected.title}`;
+            externalLinkBtn.href = selected.url;
+
+            // Handle Game 7 or fallback requirement immediately
+            if (selected.requiresFallback) {
+                loadingOverlay.style.opacity = '0';
+                loadingOverlay.style.pointerEvents = 'none';
+                iframe.src = 'about:blank';
+                fallbackBanner.classList.remove('hidden');
+                fallbackUrlText.textContent = selected.url;
+                fallbackActionBtn.href = selected.url;
+                return;
+            }
+
+            // Standard embed for other GitHub pages
+            fallbackBanner.classList.add('hidden');
+            loadingOverlay.style.opacity = '1';
+            loadingOverlay.style.pointerEvents = 'auto';
+
+            iframe.src = selected.url;
+
+            // Safety fallback timer in case iframe blocks or stalls
+            loadTimeout = setTimeout(() => {
+                loadingOverlay.style.opacity = '0';
+                loadingOverlay.style.pointerEvents = 'none';
+            }, 4000);
+        }
+
+        // Reload iframe content
+        function reloadIframe() {
+            const selected = gameList[activeIndex];
+            if (selected.requiresFallback) return;
+
+            loadingOverlay.style.opacity = '1';
+            loadingOverlay.style.pointerEvents = 'auto';
+            iframe.src = '';
+            setTimeout(() => {
+                iframe.src = selected.url;
+            }, 100);
+        }
+
+        // Hide overlay when iframe completes loading successfully
+        iframe.addEventListener('load', () => {
+            if (!gameList[activeIndex].requiresFallback) {
+                if (loadTimeout) clearTimeout(loadTimeout);
+                loadingOverlay.style.opacity = '0';
+                loadingOverlay.style.pointerEvents = 'none';
+            }
+        });
+
+        // Initialize App on load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCards();
+            selectGame(0);
+        });
+    </script>
+</body>
+</html>
+```
+eof
